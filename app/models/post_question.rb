@@ -1,0 +1,2 @@
+class PostQuestion < ApplicationRecord
+end

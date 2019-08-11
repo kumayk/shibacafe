@@ -1,0 +1,2 @@
+class PostImageCategoryRelation < ApplicationRecord
+end
