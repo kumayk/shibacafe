@@ -1,2 +1,14 @@
-<h1>PostImages#index</h1>
-<p>Find me in app/views/post_images/index.html.erb</p>
+	<div class="container">
+		<div class="row">
+			<div class="post_images" style="text-align: center; margin-left: 20px;">
+      			<% @post_images.each do |image| %>
+        			<ul class="list-group col-lg-3" style="width: 230px;">
+						<li class="list-group-item"><%= attachment_image_tag @post_image, :image, class: "profile-thumb", size: "180x180" %></li>
+						<li class="list-group-item"><%= @post_image.title %></li>
+						<li class="list-group-item"><%= @post_image.caption %></li>
+						<li class="list-group-item"><%= link_to "詳細", post_image_path(@post_image.id) %></li>
+					</ul>
+        		<% end %>
+        	</div>
+		</div>
+	</div>

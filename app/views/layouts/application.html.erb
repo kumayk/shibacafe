@@ -14,7 +14,6 @@
         <div class="container-fluid">
           <div class="container">
             <div class="row">
-              <div class="page-header">
                 <div class="col-sm-4">
                   <button type="button" class="navbar-toggle collapsed"data-toggle="collapse"data-target="#navbarEexample8">
                   <span class="sr-only">Toggle navigation</span>
@@ -33,7 +32,19 @@
                       <div class="navbar-right">
                       <% if user_signed_in? %>
                       <ul class="nav navbar-nav" style="margin-top:5px;">
-                      <li><%= link_to "投稿する" %></li>
+                      <li class="btn-group">
+                         <button type="button" class="btn btn-default">
+                                投稿する
+                         </button>
+                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <span class="caret"></span>
+                         </button>
+                           <ul class="dropdown-menu" role="menu">
+                               <li role="presentation"><a role="menuitem" tabindex="-1" href="post_images/new">写真を投稿</a></li>
+                               <li role="presentation"><a role="menuitem" tabindex="-1" href="post_movies/new">動画を投稿</a></li>
+                               <li role="presentation"><a role="menuitem" tabindex="-1" href="post_questions/new">質問を投稿</a></li>
+                           </ul>
+                      </li>
                       <li><%= link_to "マイページ" %></li>
                       <li><%= link_to "通知" %></li>
                       <li><%= link_to "_ログアウト", destroy_user_session_path, :method => :delete, class: "glyphicon glyphicon-log-out , text-muted" %></li>
@@ -47,13 +58,22 @@
                      </div>
                     </div>
                   </div>
-              </div>
             </div>
           </div>
         </div>
     </header>
 
-
     <%= yield %>
+
+  <footer class="footer style-2">
+    <div class="container">
+      <div class="row">
+          <div class="footer-store-info col-lg-12" style="margin-top: 10px; text-align: center;">
+            <p>CopyRight SHIBAcafe.inc</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
   </body>
 </html>
