@@ -36,6 +36,7 @@
                    <% end %>
                  </li>
                 <% end %>
+                <!-- 編集/削除 -->
                 <li>
                    <% if @post_image.user == current_user %>
                    <%= link_to "編集", edit_post_image_path(@post_image) %>
@@ -66,7 +67,7 @@
                         <div class="comment-author clearfix">
                           <a href="#" class="link-author"><%= image_comment.user.name %></a>
                             <span class="comment-meta">
-                              <span class="comment-date"><%= image_comment.created_at.strftime('%Y/%m/%d') %></span>
+                              <span class="comment-date"><%= image_comment.created_at.strftime('%Y/%m/%d/%H:%M') %></span>
                             </span>
                               <% if image_comment.user == current_user %>
                               <%= link_to "削除", post_image_image_comments_path(id: image_comment,post_image_id: @post_image), method: :delete, "data-confirm" => "本当に消しますか？" %>

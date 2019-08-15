@@ -1,2 +1,74 @@
-<h1>PostQuestions#show</h1>
-<p>Find me in app/views/post_questions/show.html.erb</p>
+  <div class="container">
+    <div class="row">
+
+      <div class="post-content">
+        <h2 class="post-title"><%= @post_question.title %></h2>
+          <ul class="meta-info-cells v4 float-wrapper">
+              <li>
+                <i class="fa fa-user"></i>By<a href="#">
+                <%= @post_question.user.name %></a>
+              </li>
+              <li>
+                <i class="fa fa-calendar"></i><%= @post_question.created_at.strftime('%Y/%m/%d') %>
+              </li>
+              <li>
+                <% if @post_question.user == current_user %>
+                <%= link_to "編集", edit_post_question_path(@post_question) %>
+                <% end %>
+              </li>
+              <li>
+                <% if @post_question.user == current_user %>
+                <%= link_to "削除", post_question_path(@post_question), method: :delete %>
+                <% end %>
+              </li>
+          </ul>
+
+            <div class="post-content-inner mt-20">
+              <p><%= @post_question.body %></p>
+            </div>
+      </div>
+            <!-- 回答の表示 -->
+          <div class="answer-list bt style-2" id="answers">
+            <div class="float-wrapper">
+              <p><b class="answer-count"><%= @post_question.answers.count %>件の回答</b></p>
+            </div>
+             <ol>
+               <% @post_question.answers.each do |answer| %>
+                  <li class="answer">
+                    <div class="answer-body bb">
+                      <div class="answer-text">
+                        <div class="answer-author clearfix">
+                          <a href="#" class="link-author"><%= answer.user.name %></a>
+                            <span class="answer-meta">
+                              <span class="answer-date"><%= answer.created_at.strftime('%Y/%m/%d/%H:%M') %></span>
+                            </span>
+                              <% if answer.user == current_user %>
+                              <%= link_to "削除", post_question_answers_path(id: answer,post_question_id: @post_question), method: :delete, "data-confirm" => "本当に消しますか？" %>
+                              <% end %>
+                        </div>
+                          <div class="answer-entry"><%= answer.answer %></div>
+                      </div>
+                    </div>
+                  </li>
+                <% end %>
+             </ol>
+          </div>
+
+           <!-- 回答投稿フォーム -->
+           <div class="section-title-wrapper style-1 v1 mt-30" id="divAddAnswer">
+            <h3 class="section-title left">
+              <span>回答する</span>
+            </h3>
+           </div>
+               <%= form_for [@post_question, @answer] do |f| %>
+                 <div class="row">
+                  <div class="col-sm-12">
+                    <%= f.text_area :answer, rows:'5', class: "form-control",placeholder: "回答をここに" %>
+                  </div>
+                 </div>
+                <%= f.submit "投稿する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+               <% end %>
+
+
+    </div>
+  </div>
