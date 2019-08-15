@@ -6,7 +6,7 @@
 
           <div class="post-meta-top">
             <div class="post-image">
-              <%= attachment_image_tag @post_image, :image %>
+              <%= attachment_image_tag @post_image, :image, class: "profile-thumb", size: "500x500" %>
             </div>
           </div>
 
@@ -32,7 +32,11 @@
           </div>
 
             <!-- コメントの表示 -->
-            <ol>
+          <div class="comment-list bt style-2" id="comments">
+            <div class="float-wrapper">
+              <p><b class="comment-count"><%= @post_image.image_comments.count %>件のコメント</b></p>
+            </div>
+             <ol>
                <% @post_image.image_comments.each do |image_comment| %>
                   <li class="comment">
                     <div class="comment-body bb">
@@ -51,9 +55,15 @@
                     </div>
                   </li>
                 <% end %>
-            </ol>
+             </ol>
+          </div>
 
            <!-- コメント投稿フォーム -->
+           <div class="section-title-wrapper style-1 v1 mt-30" id="divAddComment">
+            <h3 class="section-title left">
+              <span>コメント</span>
+            </h3>
+           </div>
                <%= form_for [@post_image, @image_comment] do |f| %>
                  <div class="row">
                   <div class="col-sm-12">
