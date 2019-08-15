@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :image_comments, dependent: :destroy
   has_many :movie_comments, dependent: :destroy
   has_many :answers, dependent: :destroy
+  has_many :likes, dependent: :destroy
 end
