@@ -9,7 +9,7 @@ class PostImagesController < ApplicationController
 
   def show
   	  @post_image = PostImage.find(params[:id])
-      # @post_comment = Image_comment.new
+  	  @image_comment = ImageComment.new
   end
 
   def create
@@ -33,7 +33,6 @@ class PostImagesController < ApplicationController
 
   private
     def post_image_params
-        params.require(:post_image).permit(:title, :image, :caption)
+        params.require(:post_image).permit(:title, :image, :caption, category_ids: [])
     end
-
 end

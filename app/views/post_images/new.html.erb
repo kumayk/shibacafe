@@ -44,8 +44,21 @@
                   <%= f.text_area :caption, class:"form-control", rows:"3", placeholder:"コメントここに" %>
                 </div>
               </div>
+
+              <div class="row">
+                <div class="col-sm-12">
+                 <%= f.label :category, 'カテゴリ' %>
+                   <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %> 
+                   <%= category.label do %>
+                   <%= category.check_box %>
+                   <%= category.text %>
+                   <% end %>
+                 <% end %>
+                </div>
+              </div>
+
               <hr>
-              <%= f.submit "送信", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+              <%= f.submit "投稿", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
             <% end %>
           </div>
         </div>

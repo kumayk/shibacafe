@@ -6,4 +6,7 @@ class User < ApplicationRecord
   has_many :post_images, dependent: :destroy
   has_many :post_movies, dependent: :destroy
   has_many :post_queations, dependent: :destroy
+  has_many :image_comments, dependent: :destroy
+  has_many :movie_comments, dependent: :destroy
+  has_many :answers, dependent: :destroy
 end
