@@ -20,6 +20,11 @@
               <li>
                 <i class="fa fa-calendar"></i><%= @post_image.created_at.strftime('%Y/%m/%d') %>
               </li>
+              <li><b>カテゴリー</b>
+                    <% @post_image.categories.each do |category| %>
+                      <%= category.category_name %>
+                    <% end %>
+              </li>
                 <!-- いいね -->
                 <% if @post_image.liked_by?(current_user) %>
                  <li>
