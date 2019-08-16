@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resource :answers, only: [:create, :update, :destroy]
   end
   resources :post_movies, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
-    resource :likes, only: [:create, :destroy]
+    resource :movie_likes, only: [:create, :destroy]
     resource :movie_comments, only: [:create, :update, :destroy]
   end
   resources :post_images, only: [:new, :create, :index, :show, :edit, :update, :destroy] do

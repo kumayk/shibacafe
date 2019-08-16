@@ -1,7 +1,7 @@
 class PostMovie < ApplicationRecord
 	belongs_to :user
-	has_many :likes, dependent: :destroy
-        def liked_by?(user)
-          likes.where(user_id: user.id).exists?
+	has_many :movie_likes, dependent: :destroy
+        def movie_liked_by?(user)
+          movie_likes.where(user_id: user.id).exists?
         end
 end
