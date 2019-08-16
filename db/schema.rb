@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_16_092421) do
+ActiveRecord::Schema.define(version: 2019_08_16_101114) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "user_id"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 2019_08_16_092421) do
     t.text "caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "video"
   end
 
   create_table "post_questions", force: :cascade do |t|

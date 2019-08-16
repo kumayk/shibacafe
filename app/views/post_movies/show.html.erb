@@ -1,2 +1,19 @@
-<h1>PostMovies#show</h1>
-<p>Find me in app/views/post_movies/show.html.erb</p>
+ <div>
+ 	<%= link_to @post_movie.video_url.to_s do %>
+     <%= image_tag(@post_movie.video_url.to_s, id: "video") %>
+ </div>
+
+  <p><%= @post_movie.title %></p>
+  <p><%= @post_movie.caption %></p>
+  <% end %>
+
+                  <!-- 編集/削除 -->
+                   <% if @post_movie.user == current_user %>
+                   <%= link_to "編集", edit_post_movie_path(@post_movie) %>
+                   <% end %>
+
+                   <% if @post_movie.user == current_user %>
+                   <%= link_to "削除", post_movie_path(@post_movie), method: :delete %>
+                   <% end %>
+                 </li>
+            </ul>
