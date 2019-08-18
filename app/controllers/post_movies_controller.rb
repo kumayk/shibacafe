@@ -3,21 +3,23 @@ class PostMoviesController < ApplicationController
   	 @post_movie = PostMovie.new
   end
 
+  def index
+  	 @post_movie = PostMovie.all
+  end
+
   def show
   	  @post_movie = PostMovie.find(params[:id])
+  	  @movie_comment = MovieComment.new
   end
 
   def create
      @post_movie = PostMovie.new(post_movie_params)
      @post_movie.user_id = current_user.id
-        if @post_movie.save
-          redirect_to post_movie_path(@post_movie)
+        if @post_movie.save(post_movie_params) && @post_movie.video.recreate_versions!
+              redirect_to post_movie_path(@post_movie), notice: 'Article was successfully updated.'
         else
-          render :new
+           render action: 'new'
         end
-  end
-
-  def index
   end
 
   def edit
