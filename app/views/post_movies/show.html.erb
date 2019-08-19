@@ -7,7 +7,7 @@
           <div class="post-meta-top">
             <div class="post-movie">
  	           <%= link_to @post_movie.video_url.to_s do %>
-               <%= image_tag(@post_movie.video_url(:screenshot).to_s, id: "video", :alt => "screenshot", size: "240x300") %>
+               <%= image_tag(@post_movie.video_url(:screenshot).to_s, id: "video", :alt => "screenshot", style: "height:300px;") %>
                <% end %>
             </div>
           </div>

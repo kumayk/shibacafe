@@ -46,7 +46,7 @@
                                <li role="presentation"><a role="menuitem" tabindex="-1" href="post_questions/new">質問を投稿</a></li>
                            </ul>
                       </li>
-                      <li><%= link_to "マイページ" %></li>
+                      <li><%= link_to "マイページ",user_path(current_user.id) %></li>
                       <li><%= link_to "通知" %></li>
                       <li><%= link_to "_ログアウト", destroy_user_session_path, :method => :delete, class: "glyphicon glyphicon-log-out , text-muted" %></li>
                      </ul>

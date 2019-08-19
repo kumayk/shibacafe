@@ -1,0 +1,16 @@
+<div class="container">
+   <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+         <div class="form-user style-1 rounded has-shadow-1"> 
+            <div class="form-header text-center">
+               <h3 class="profile-name"><%= @user.name %></h3>
+                 <p><%= attachment_image_tag @user, :profile_image, class: "img-circle pull-left profile-img", fallback: "no-image.jpg", size: "120x120" %></p>
+                 <p><%= simple_format(@user.introduction) %></p>
+                   <% if @user.id == current_user.id %>
+                     <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "pull-right" %></p>
+                   <% end %>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
