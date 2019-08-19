@@ -5,11 +5,13 @@ class PostImagesController < ApplicationController
 
   def index
   	  @post_images = PostImage.all
+      @categories = Category.all
   end
 
   def show
   	  @post_image = PostImage.find(params[:id])
   	  @image_comment = ImageComment.new
+      @categories = Category.all
   end
 
   def create

@@ -14,4 +14,5 @@ Rails.application.routes.draw do
     resource :likes, only: [:create, :destroy]
     resource :image_comments, only: [:create, :update, :destroy]
   end
+  get 'category/:id/post_images' => 'categories#index'
 end

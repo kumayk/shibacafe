@@ -22,7 +22,7 @@
               </li>
               <li><b>カテゴリー</b>
                     <% @post_image.categories.each do |category| %>
-                      <%= category.category_name %>
+                      <%= link_to category.category_name,'/category/'+category.id.to_s+'/post_images' %>
                     <% end %>
               </li>
                 <!-- いいね -->
