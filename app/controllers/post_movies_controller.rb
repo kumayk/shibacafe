@@ -4,7 +4,7 @@ class PostMoviesController < ApplicationController
   end
 
   def index
-  	 @post_movie = PostMovie.all
+  	 @post_movies = PostMovie.all
   end
 
   def show
