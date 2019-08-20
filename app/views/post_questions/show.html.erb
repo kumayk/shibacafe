@@ -6,10 +6,10 @@
           <ul class="meta-info-cells v4 float-wrapper">
               <li>
                 <i class="fa fa-user"></i>By<a href="#">
-                <%= @post_question.user.name %></a>
+                <%= link_to @post_question.user.name,user_path(@post_question.user.id) %></a>
               </li>
               <li>
-                <i class="fa fa-calendar"></i><%= @post_question.created_at.strftime('%Y/%m/%d') %>
+                <i class="fa fa-calendar"></i><%= @post_question.created_at.strftime('%Y/%m/%d/%H:%M') %>
               </li>
               <li>
                 <% if @post_question.user == current_user %>
@@ -38,7 +38,7 @@
                     <div class="answer-body bb">
                       <div class="answer-text">
                         <div class="answer-author clearfix">
-                          <a href="#" class="link-author"><%= answer.user.name %></a>
+                          <a href="#" class="link-author"><%= link_to answer.user.name,user_path(answer.user.id) %></a>
                             <span class="answer-meta">
                               <span class="answer-date"><%= answer.created_at.strftime('%Y/%m/%d/%H:%M') %></span>
                             </span>

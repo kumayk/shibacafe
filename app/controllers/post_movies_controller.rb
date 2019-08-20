@@ -4,7 +4,7 @@ class PostMoviesController < ApplicationController
   end
 
   def index
-  	 @post_movies = PostMovie.all
+  	 @post_movies = PostMovie.page(params[:page]).reverse_order.per(6)
   end
 
   def show

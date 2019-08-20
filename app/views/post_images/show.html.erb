@@ -15,10 +15,10 @@
             <ul class="meta-info-cells v4 float-wrapper">
               <li>
               <i class="fa fa-user"></i>By<a href="#">
-              <%= @post_image.user.name %></a>
+              <%= link_to @post_image.user.name,user_path(@post_image.user.id) %></a>
               </li>
               <li>
-                <i class="fa fa-calendar"></i><%= @post_image.created_at.strftime('%Y/%m/%d') %>
+                <i class="fa fa-calendar"></i><%= @post_image.created_at.strftime('%Y/%m/%d/%H:%M') %>
               </li>
               <li><b>カテゴリー</b>
                     <% @post_image.categories.each do |category| %>
@@ -70,7 +70,7 @@
                     <div class="comment-body bb">
                       <div class="comment-text">
                         <div class="comment-author clearfix">
-                          <a href="#" class="link-author"><%= image_comment.user.name %></a>
+                          <a href="#" class="link-author"><%= link_to image_comment.user.name,user_path(image_comment.user.id) %></a>
                             <span class="comment-meta">
                               <span class="comment-date"><%= image_comment.created_at.strftime('%Y/%m/%d/%H:%M') %></span>
                             </span>

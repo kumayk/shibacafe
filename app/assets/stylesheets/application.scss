@@ -15,3 +15,40 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+#globalNavi ul {
+    display: flex;
+    background: #333;
+    border-radius: 4px;
+    flex-flow: row;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 6px 0;
+    width: 90%;
+}
+
+#globalNavi a {
+    display: block;
+    border-radius: 4px;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+}
+
+#globalNavi ul li a:hover {
+    background: #72baeb;
+}
+
+.fixed {
+    position: fixed;
+    top: 0;
+    padding: 0;
+    width: 100%;
+    z-index: 1000;
+}

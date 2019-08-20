@@ -60,6 +60,17 @@
                      </div>
                     </div>
                   </div>
+
+                  <nav id="globalNavi">
+                    <ul>
+                      <li><a href="#">SHIBAcafeとは</a></li>
+                      <li><a href="#">柴犬について知ろう</a></li>
+                      <li><a href="post_images">写真を見る</a></li>
+                      <li><a href="post_movies">動画を見る</a></li>
+                      <li><a href="post_questions">質問コーナー</a></li>
+                    </ul>
+                  </nav>
+
             </div>
           </div>
         </div>
@@ -79,3 +90,17 @@
 
   </body>
 </html>
+
+<script>
+$(function() {
+    var offset = $('#globalNavi').offset();
+ 
+    $(window).scroll(function () {
+        if ($(window).scrollTop() > offset.top) {
+            $('#globalNavi').addClass('fixed');
+        } else {
+            $('#globalNavi').removeClass('fixed');
+        }
+    });
+});
+</script>

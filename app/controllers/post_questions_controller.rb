@@ -4,7 +4,7 @@ class PostQuestionsController < ApplicationController
   end
 
   def index
-  	  @post_questions = PostQuestion.all
+  	  @post_questions = PostQuestion.page(params[:page]).reverse_order.per(6)
   end
 
   def show

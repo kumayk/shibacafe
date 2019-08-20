@@ -17,10 +17,10 @@
             <ul class="meta-info-cells v4 float-wrapper">
               <li>
               <i class="fa fa-user"></i>By<a href="#">
-              <%= @post_movie.user.name %></a>
+              <%= link_to @post_movie.user.name,user_path(@post_movie.user.id) %></a>
               </li>
               <li>
-                <i class="fa fa-calendar"></i><%= @post_movie.created_at.strftime('%Y/%m/%d') %>
+                <i class="fa fa-calendar"></i><%= @post_movie.created_at.strftime('%Y/%m/%d/%H:%M') %>
               </li>
                 <!-- いいね -->
                 <% if @post_movie.movie_liked_by?(current_user) %>
@@ -66,7 +66,7 @@
                     <div class="comment-body bb">
                       <div class="comment-text">
                         <div class="comment-author clearfix">
-                          <a href="#" class="link-author"><%= movie_comment.user.name %></a>
+                          <a href="#" class="link-author"><%= link_to movie_comment.user.name,user_path(movie_comment.user.id) %></a>
                             <span class="comment-meta">
                               <span class="comment-date"><%= movie_comment.created_at.strftime('%Y/%m/%d/%H:%M') %></span>
                             </span>
