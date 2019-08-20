@@ -4,7 +4,7 @@ class PostImagesController < ApplicationController
   end
 
   def index
-  	  @post_images = PostImage.page(params[:page]).reverse_order.per(15)
+  	  @post_images = PostImage.page(params[:page]).reverse_order.per(10)
       @all_ranks = PostImage.find(Like.group(:post_image_id).order('count(post_image_id) desc').limit(5).pluck(:post_image_id))
       @categories = Category.all
   end

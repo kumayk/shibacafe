@@ -12,20 +12,16 @@
 					</ul>
         		<% end %>
         		<%= paginate @post_images, class: "paginate" %>
-        	  </div>
-        	</div>
+        </div>
+      </div>
 		</div>
 	</div>
 
 <script>
-$(window).on('scroll', function() {
-    scrollHeight = $(document).height();
-    scrollPosition = $(window).height() + $(window).scrollTop();
-    if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
-          $('.jscroll').jscroll({
-          	contentSelector: '.image-list'
-            nextSelector: 'span.next:last a'
-          });
-    }
+$(function() {
+    $('.jscroll').jscroll({
+    	contentSelector: '.image-list',
+      nextSelector: 'span.next:last a'
+    });
 });
 </script>
