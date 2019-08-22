@@ -7,9 +7,9 @@
         			<ul class="list-group col-lg-3" style="width: 380px;">
 						<li class="list-group-item">
 							<%= link_to movie.video_url.to_s do %>
-                                <%= image_tag(movie.video_url(:screenshot).to_s, id: "video", :alt => "screenshot", style: "height:13em;") %>
-                            <% end %>
-                        </li>
+                  <%= image_tag(movie.video_url(:screenshot).to_s, id: "video", :alt => "screenshot", style: "height:13em;") %>
+              <% end %>
+            </li>
 						<li class="list-group-item"><%= movie.title %></li>
 						<li class="list-group-item"><%= movie.caption %></li>
 						<li class="list-group-item"><%= link_to "詳細", post_movie_path(movie.id) %></li>

@@ -48,7 +48,10 @@
                            </ul>
                       </li>
                       <li><%= link_to "マイページ",user_path(current_user.id) %></li>
-                      <li><%= link_to "通知" %></li>
+                      <li class="notification"><%= link_to '通知', notifications_path, class:"btn"  %>
+                        <% if current_user.uncheck_notifications? %>
+                          <i class="fa fa-circle notification-circle"></i>
+                        <% end %>
                       <li><%= link_to "_ログアウト", destroy_user_session_path, :method => :delete, class: "glyphicon glyphicon-log-out , text-muted" %></li>
                      </ul>
                   <% else %>
@@ -65,9 +68,9 @@
                     <ul>
                       <li><a href="#">SHIBAcafeとは</a></li>
                       <li><a href="#">柴犬について知ろう</a></li>
-                      <li><a href="post_images">写真を見る</a></li>
-                      <li><a href="post_movies">動画を見る</a></li>
-                      <li><a href="post_questions">質問コーナー</a></li>
+                      <li><%= link_to "写真を見る",post_images_path %></li>
+                      <li><%= link_to "動画を見る",post_movies_path %></li>
+                      <li><%= link_to "質問コーナー",post_questions_path %></li>
                     </ul>
                   </nav>
 
@@ -97,9 +100,9 @@ $(function() {
  
     $(window).scroll(function () {
         if ($(window).scrollTop() > offset.top) {
-            $('#globalNavi').addClass('fixed');
+            // $('#globalNavi').addClass('fixed');
         } else {
-            $('#globalNavi').removeClass('fixed');
+            // $('#globalNavi').removeClass('fixed');
         }
     });
 });

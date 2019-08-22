@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_16_101114) do
+ActiveRecord::Schema.define(version: 2019_08_21_081735) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "user_id"
@@ -56,6 +56,21 @@ ActiveRecord::Schema.define(version: 2019_08_16_101114) do
   create_table "movie_likes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_movie_id"
+    t.boolean "check", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visiter_id"
+    t.integer "visited_id"
+    t.integer "post_image_id"
+    t.integer "image_comment_id"
+    t.integer "post_movie_id"
+    t.integer "movie_comment_id"
+    t.integer "post_question_id"
+    t.integer "answer_id"
+    t.string "action"
     t.boolean "check", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

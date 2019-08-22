@@ -12,4 +12,11 @@ class User < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :movie_likes, dependent: :destroy
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+
+  # ユーザーに未確認の通知があるか確認
+  def uncheck_notifications?
+    self.passive_notifications.where(check: false).exists?
+  end
 end

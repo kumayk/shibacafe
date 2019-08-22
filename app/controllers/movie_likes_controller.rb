@@ -1,9 +1,14 @@
 class MovieLikesController < ApplicationController
   def create
-        post_movie = PostMovie.find(params[:post_movie_id])
-        movie_like = current_user.movie_likes.new(post_movie_id: post_movie.id)
+        @post_movie = PostMovie.find(params[:post_movie_id])
+        movie_like = current_user.movie_likes.new(post_movie_id: @post_movie.id)
         movie_like.save
-          redirect_to post_movie_path(post_movie)
+        @post_movie.create_notification_by(current_user)
+        # respond_to do |format|
+        # format.html {redirect_to request.referrer}
+        # format.js
+        # end
+        redirect_to post_movie_path(@post_movie)
   end
   def destroy
         post_movie = PostMovie.find(params[:post_movie_id])

@@ -1,10 +1,15 @@
 class ImageCommentsController < ApplicationController
 	def create
-        post_image = PostImage.find(params[:post_image_id])
+        @post_image = PostImage.find(params[:post_image_id])
         comment = current_user.image_comments.new(image_comment_params)
-        comment.post_image_id = post_image.id
+        comment.post_image_id = @post_image.id
         comment.save
-           redirect_to post_image_path(post_image)
+        @post_image.create_notifications_by(current_user)
+        # respond_to do |format|
+        # format.html {redirect_to request.referrer}
+        # format.js
+        # end
+        redirect_to post_image_path(@post_image)
     end
 
     def destroy
@@ -16,6 +21,6 @@ class ImageCommentsController < ApplicationController
 
     private
     def image_comment_params
-        params.require(:image_comment).permit(:user_id, :post_image_id, :comment)
+        params.require(:image_comment).permit(:comment)
     end
 end

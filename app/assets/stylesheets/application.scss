@@ -52,3 +52,9 @@ html, body {
     width: 100%;
     z-index: 1000;
 }
+
+.fa-circle:before {
+    content: "\f111";
+    color: lightcoral;
+    font-size: large;
+}
