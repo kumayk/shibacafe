@@ -9,3 +9,30 @@ div.image-list {
 nav.pagination {
   display: none;
 }
+
+.box {
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px gray;
+}
+.box .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -27px;
+    left: -3px;
+    padding: 0 9px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 17px;
+    background: gray;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+}
+.box ul li {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+

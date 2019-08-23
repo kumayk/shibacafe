@@ -12,18 +12,18 @@ module NotificationsHelper
 	    # when "follow" then
 	      # "#{visiter}があなたをフォローしました"
 	    when "like" then
-	      "#{visiter}が#{your_post_image}にいいね！しました"
+	      "#{visiter}さんが#{your_post_image}にいいね！しました"
 	    when "movie_like" then
-	      "#{visiter}が#{your_post_movie}にいいね！しました"
+	      "#{visiter}さんが#{your_post_movie}にいいね！しました"
 	    when "answer" then
 	      @answer = Answer.find_by(id:notification.answer_id)&.content
-	      "#{visiter}が#{your_post_question}に回答しました"
+	      "#{visiter}さんが#{your_post_question}に回答しました"
 	    when "image_comment" then
           @image_comment = ImageComment.find_by(id:notification.image_comment_id)&.content
-          "#{visiter}が#{your_post_image}にコメントしました"
+          "#{visiter}さんが#{your_post_image}にコメントしました"
 	    when "movie_comment" then
 	      @movie_comment = MovieComment.find_by(id:notification.movie_comment_id)&.content
-          "#{visiter}が#{your_post_movie}にコメントしました"
+          "#{visiter}さんが#{your_post_movie}にコメントしました"
 	  end
 	end
 end

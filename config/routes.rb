@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'top#index'
-  resources :users, only: [:image_index, :movie_index, :question_index, :show, :edit, :update]
+  resources :users, only: [:show, :edit, :update]
   resources :post_questions, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     resource :answers, only: [:create, :update, :destroy]
   end

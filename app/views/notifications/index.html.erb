@@ -1,11 +1,13 @@
-<div>
-  <h4 class="sub-title">通知</h4>
-  <% if @notifications.exists? %>
-    <div class="users-index">
-      <%= render @notifications %>
-      <%= paginate @notifications %>
+  <div class="container">
+    <div class="row">
+	      <h4 class="sub-title">通知</h4>
+	        <% if @notifications.exists? %>
+	         <div class="users-index">
+	            	<%= render @notifications %>
+	            <%= paginate @notifications, class: "paginate" %>
+	         </div>
+	        <% else %>
+	            <p>通知はありません</p>
+	        <% end %>
     </div>
-  <% else %>
-    <p>通知はありません</p>
-  <% end %>
 </div>

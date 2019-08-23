@@ -1,7 +1,31 @@
 <body>
 	<div class="container">
 		<div class="row">
-          <h1>写真投稿一覧</h1>
+		  <div class="col-lg-2">
+			<div class="box">
+               <span class="box-title">カテゴリ別</span>
+				  <% @categories.each do |category| %>
+					 <ul>
+				        <li><%= link_to category.category_name,'/category/'+category.id.to_s+'/post_images' %></li>
+					 </ul>
+				  <% end %>
+            </div>
+          </div>
+         <div class="col-lg-10">
+          <h3>人気投稿</h3>
+			<div class="post_images" style="text-align: center; margin-left: 20px;">
+			  <% @all_ranks.each do |image| %>
+        	      <ul class="list-group col-lg-3" style="width: 230px;">
+				     <li class="list-group-item"><%= attachment_image_tag image, :image, class: "profile-thumb", size: "180x180" %></li>
+					 <li class="list-group-item"><%= simple_format(image.title) %></li>
+					 <li class="list-group-item"><%= image.caption %></li>
+					 <li class="list-group-item"><%= link_to "詳細", post_image_path(image.id) %></li>
+				  </ul>
+        	  <% end %>
+            </div>
+         </div>
+         <div class="col-lg-10">
+          <h3>写真投稿一覧</h3>
 			<div class="post_images" style="text-align: center; margin-left: 20px;">
 			  <div class="image-list jscroll">
       			<% @post_images.each do |image| %>
@@ -15,6 +39,7 @@
         		<%= paginate @post_images, class: "paginate" %>
               </div>
             </div>
+         </div>
 		</div>
 	</div>
 </body>
