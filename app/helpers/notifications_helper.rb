@@ -9,8 +9,8 @@ module NotificationsHelper
 	  your_post_movie = link_to 'あなたの投稿', notification.post_movie
 	  your_post_question = link_to 'あなたの質問', notification.post_question
 	  case notification.action
-	    # when "follow" then
-	      # "#{visiter}があなたをフォローしました"
+	    when "follow" then
+	      "#{visiter}があなたをフォローしました"
 	    when "like" then
 	      "#{visiter}さんが#{your_post_image}にいいね！しました"
 	    when "movie_like" then

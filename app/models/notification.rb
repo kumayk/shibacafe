@@ -6,6 +6,7 @@ class Notification < ApplicationRecord
   belongs_to :movie_comment, optional: true
   belongs_to :post_question, optional: true
   belongs_to :answer, optional: true
+  belongs_to :user, optional: true
 
 
   # 通知送ってきた側のユーザーを取得

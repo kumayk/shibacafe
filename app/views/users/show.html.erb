@@ -4,6 +4,13 @@
          <div class="form-user style-1 rounded has-shadow-1"> 
             <div class="form-header text-center">
                <h3 class="profile-name"><%= @user.name %></h3>
+                  <% if current_user != @user %>
+                     <% if @user.followed_by?(current_user) %>
+                       <p><%=link_to "フォロー解除", user_relationships_path(@user.id), method: :delete %></p>
+                     <% else %>
+                       <p><%=link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
+                     <% end %>
+                  <% end %>
                  <p><%= attachment_image_tag @user, :profile_image, class: "img-circle pull-left profile-img", fallback: "no-image.jpg", size: "150x150" %></p>
                  <p><%= simple_format(@user.introduction) %></p>
                    <% if @user.id == current_user.id %>

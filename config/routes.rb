@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'top#index'
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    resource :relationships, only: [:create, :destroy]
+      get :follows, on: :member
+      get :followers, on: :member
+  end
   resources :post_questions, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     resource :answers, only: [:create, :update, :destroy]
   end
