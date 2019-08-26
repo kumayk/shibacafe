@@ -4,7 +4,7 @@
 
 .box15 {
     padding: 0.2em 0.5em;
-    margin: 2em 0;
+    margin: 1em 0;
     color: #565656;
     background: #ffeaea;
     box-shadow: 0px 0px 0px 10px #ffeaea;
@@ -17,9 +17,14 @@
 }
 
 .notification-list {
-  padding: 0;
+    padding: 0;
 }
 
 nav.pagination {
-  display: none;
+    display: none;
+}
+
+.row-notification {
+    width: 50%;
+    margin: 0 auto;
 }

@@ -22,11 +22,21 @@ html, body {
 }
 
 .main-visual {
+  position: relative;
   width: 100%;
   height: 300px;
   background-image: url(shiba2.jpg);
   background-size: cover; /* 背景画像の縦横比を維持したまま背景の表示領域を覆うように表示 */
   background-position: 0px -240px;
+}
+
+.main-visual p {
+  top: 50%;
+  left: 20%;
+  position: absolute;
+  font-weight: bold; /*太字に*/
+  font-size: 2em;/*サイズ2倍*/
+  font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif;
 }
 
 #page_top{
@@ -91,12 +101,6 @@ html, body {
    position: relative;
 }
 
-.fa-circle:before {
-    content: "\f111";
-    color: lightcoral;
-    font-size: large;
-}
-
 .navbar-collapse.collapse {
     display: block !important;
     height: auto !important;
@@ -148,17 +152,19 @@ html, body {
     position: relative;
 }
 
-.circle{
-  width: 15px;
-  height: 15px;
+.circle {
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   position: absolute;
-  top: 5px;
+  top: 2px;
   left: 40px;
   text-align: center;
   line-height: 15px;
-  background-color: red;
+  background-color: orangered;
   .notice-count {
+    color: white;
+    margin-top: 1px;
   }
 }
 

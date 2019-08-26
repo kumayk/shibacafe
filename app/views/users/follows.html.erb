@@ -1,15 +1,13 @@
-<section class="slice slice-lg sct-color-1">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-header text-center">
-                     <h3 class="form-header-title">フォロー中のユーザー</h3>
-                </div>
+<div class="container">
+     <div class="row-follow">
+           <div class="form-header text-center">
+                <h3 class="form-header-title">フォロー中のユーザー</h3>
                     <div class="form-body">
                        <div class="row">
-                         <div class="col-xs-offset-1 col-xs-10">
   　　　　　　　　　　　　　　 <% @users.each do |user| %>
-						     <%= attachment_image_tag user, :profile_image, class: "img-circle pull-left profile-img", fallback: "no-image.jpg", size: "50x50" %>
+                              <p><%= link_to user_path(user.id) do %>
+						       <%= attachment_image_tag user, :profile_image, class: "img-circle profile-img", fallback: "no-image.jpg", size: "50x50" %>
+                              <% end %>
 						     <%= link_to user.name,user_path(user.id) %>
 						       <% if current_user != user %>
 						          <% if user.followed_by?(current_user) %>
@@ -18,11 +16,10 @@
 						             <%=link_to "フォローする", user_relationships_path(user.id), method: :post, class:"btn btn-primary", :style=>"width: 120px;" %>
 						          <% end %>
 						       <% end %>
+                              </p>
 						     <% end %>
-						 </div>
                        </div>
                     </div>
-            </div>
-        </div>
-    </div>
-</section>
+           </div>
+     </div>
+</div>
