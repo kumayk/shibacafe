@@ -8,7 +8,7 @@ class PostImage < ApplicationRecord
     has_many :notifications,dependent: :destroy
 
     def liked_by?(user)
-      likes.where(user_id: user.id).exists?
+        likes.where(user_id: user.id).exists?
     end
 
     def create_notification_by(user)

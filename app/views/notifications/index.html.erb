@@ -1,13 +1,24 @@
   <div class="container">
     <div class="row">
-	      <h4 class="sub-title">通知</h4>
+	      <h4 class="sub-title">通知一覧</h4>
 	        <% if @notifications.exists? %>
 	         <div class="users-index">
+			  <div class="notification-list jscroll">
 	            	<%= render @notifications %>
 	            <%= paginate @notifications, class: "paginate" %>
+	          </div>
 	         </div>
 	        <% else %>
 	            <p>通知はありません</p>
 	        <% end %>
     </div>
 </div>
+
+<script>
+$(function() {
+    $('.jscroll').jscroll({
+    	contentSelector: '.notification-list',
+      nextSelector: 'span.next:last a'
+    });
+});
+</script>

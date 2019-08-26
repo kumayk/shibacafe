@@ -6,31 +6,34 @@
 
           <div class="post-meta-top">
             <div class="post-image">
-              <%= attachment_image_tag @post_image, :image, class: "profile-thumb", size: "500x500" %>
+              <br>
+                <div class="col-xs-5 col-xs-offset-2">
+                  <%= attachment_image_tag @post_image, :image, class: "profile-thumb", size: "400x400" %>
+                </div>
             </div>
           </div>
 
+         <div class="col-xs-5">
           <div class="post-content">
-            <h2 class="post-title"><%= @post_image.title %></h2>
+            <br>
             <ul class="meta-info-cells v4 float-wrapper">
               <li>
-              <i class="fa fa-user"></i>By<a href="#">
-              <%= link_to @post_image.user.name,user_path(@post_image.user.id) %></a>
-              </li>
-              <li>
                 <i class="fa fa-calendar"></i><%= @post_image.created_at.strftime('%Y/%m/%d/%H:%M') %>
+                <i class="fa fa-user"></i>By
+                   <%= link_to @post_image.user.name,user_path(@post_image.user.id) %>
               </li>
               <li><b>カテゴリー</b>
                     <% @post_image.categories.each do |category| %>
                       <%= link_to category.category_name,'/category/'+category.id.to_s+'/post_images' %>
                     <% end %>
               </li>
+              <% if user_signed_in? %>
                 <!-- いいね -->
                 <% if @post_image.liked_by?(current_user) %>
                  <li>
                    <%= link_to post_image_likes_path(@post_image), method: :delete do %>
                    <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-                   <%= @post_image.likes.count %> いいね
+                   <%= @post_image.likes.count %> いいね取消
                    <% end %>
                  </li>
                 <% else %>
@@ -44,25 +47,32 @@
                 <!-- 編集/削除 -->
                 <li>
                    <% if @post_image.user == current_user %>
-                   <%= link_to "編集", edit_post_image_path(@post_image) %>
+                   <%= link_to "編集する", edit_post_image_path(@post_image) %>/
                    <% end %>
-                </li>
-                 <li>
                    <% if @post_image.user == current_user %>
-                   <%= link_to "削除", post_image_path(@post_image), method: :delete %>
+                   <%= link_to "削除する", post_image_path(@post_image), data: { confirm: "消去します。宜しいですか?" }, method: :delete %>
                    <% end %>
                  </li>
             </ul>
+            <% end %>
 
             <div class="post-content-inner mt-20">
+              <b><%= @post_image.title %></b>
               <p><%= @post_image.caption %></p>
             </div>
           </div>
+        </div>
+      </div>
+     </div>
+    </div>
+   </div>
 
+    <div class="container">
+        <div class="row-comment">
             <!-- コメントの表示 -->
           <div class="comment-list bt style-2" id="comments">
             <div class="float-wrapper">
-              <p><b class="comment-count"><%= @post_image.image_comments.count %>件のコメント</b></p>
+              <p><b class="comment-count">(<%= @post_image.image_comments.count %>件のコメント)</b></p>
             </div>
              <ol>
                <% @post_image.image_comments.each do |image_comment| %>
@@ -75,7 +85,7 @@
                               <span class="comment-date"><%= image_comment.created_at.strftime('%Y/%m/%d/%H:%M') %></span>
                             </span>
                               <% if image_comment.user == current_user %>
-                              <%= link_to "削除", post_image_image_comments_path(id: image_comment,post_image_id: @post_image), method: :delete, "data-confirm" => "本当に消しますか？" %>
+                              <%= link_to "削除", post_image_image_comments_path(id: image_comment,post_image_id: @post_image), method: :delete, "data-confirm" => "コメントを消去します。宜しいですか？" %>
                               <% end %>
                         </div>
                           <div class="comment-entry"><%= image_comment.comment %></div>
@@ -100,9 +110,6 @@
                  </div>
                 <%= f.submit "投稿する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
                <% end %>
-
         </div>
       </div>
-    </div>
-  </div>
 </section>

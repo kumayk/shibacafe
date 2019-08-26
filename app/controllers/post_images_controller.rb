@@ -4,7 +4,7 @@ class PostImagesController < ApplicationController
   end
 
   def index
-  	  @post_images = PostImage.page(params[:page]).reverse_order.per(10)
+  	  @post_images = PostImage.page(params[:page]).reverse_order.per(9)
       @all_ranks = PostImage.find(Like.group(:post_image_id).order('count(post_image_id) desc').limit(3).pluck(:post_image_id))
       @categories = Category.all
   end
@@ -38,7 +38,7 @@ class PostImagesController < ApplicationController
   def destroy
   	  @post_image = PostImage.find(params[:id])
       @post_image.destroy
-         redirect_to post_images_path
+         redirect_to user_path(current_user)
   end
 
   private

@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:edit,:update]
+  before_action :authenticate_user!, only: [:edit,:update,:follows,:followers]
 
   def show
   	 @user = User.find(params[:id])
+     @users = @user.followings
   end
 
   def edit
@@ -17,12 +18,12 @@ class UsersController < ApplicationController
 
   def follows
      @user = User.find(params[:id])
-     @users = user.followings
+     @users = @user.followings
   end
 
   def followers
-    @user = User.find(params[:id])
-    @users = user.followers
+     @user = User.find(params[:id])
+     @users = @user.followers
   end
 
   private

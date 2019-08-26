@@ -36,3 +36,15 @@ nav.pagination {
     display: inline-block;
 }
 
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+}
+
+.row-comment {
+    width: 50%;
+    margin: 0 auto;
+}

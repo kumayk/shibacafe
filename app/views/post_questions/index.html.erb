@@ -1,14 +1,13 @@
 	<div class="container">
 		<div class="row">
 		  <h1>質問コーナー</h1>
-			<div class="post_questions" style="text-align: center; margin-left: 20px;">
+			<div class="post_questions" style="text-align: left; margin-left: 20px;">
 			  <div class="question-list jscroll">
       			<% @post_questions.each do |question| %>
         			<ul class="list-group col-lg-3" style="width: 380px;">
-						<li class="list-group-item"><%= question.title %></li>
-						<li class="list-group-item"><%= question.body %></li>
-						<li class="list-group-item"><%= question.answers.count %>件の回答</li>
-						<li class="list-group-item"><%= link_to "詳細", post_question_path(question.id) %></li>
+						<li class="list-group-item list-group-item-warning"><b>タイトル：</b><%= link_to question.title, post_question_path(question.id) %></li>
+						<li class="list-group-item" style="text-align: center;"><%= question.answers.count %>件の回答</li>
+						<li class="list-group-item" style="text-align: center;"><%= question.created_at.strftime('%Y/%m/%d') %></li>
 					</ul>
         		<% end %>
         		<%= paginate @post_questions, class: "paginate" %>

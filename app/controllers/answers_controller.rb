@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+    before_action :authenticate_user!
 	def create
         @post_question = PostQuestion.find(params[:post_question_id])
         answer = current_user.answers.new(answer_params)

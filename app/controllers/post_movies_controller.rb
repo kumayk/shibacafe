@@ -35,7 +35,7 @@ class PostMoviesController < ApplicationController
   def destroy
   	  @post_movie = PostMovie.find(params[:id])
       @post_movie.destroy
-         redirect_to post_movies_path
+         redirect_to user_path(current_user)
   end
 
   private

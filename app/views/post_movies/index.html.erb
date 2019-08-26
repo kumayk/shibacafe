@@ -5,14 +5,16 @@
 			  <div class="movie-list jscroll">
       			<% @post_movies.each do |movie| %>
         			<ul class="list-group col-lg-3" style="width: 380px;">
-						<li class="list-group-item">
-							<%= link_to movie.video_url.to_s do %>
-                  <%= image_tag(movie.video_url(:screenshot).to_s, id: "video", :alt => "screenshot", style: "height:13em;") %>
-              <% end %>
-            </li>
-						<li class="list-group-item"><%= movie.title %></li>
-						<li class="list-group-item"><%= movie.caption %></li>
-						<li class="list-group-item"><%= link_to "詳細", post_movie_path(movie.id) %></li>
+  						<li class="list-group-item">
+  							<%= link_to movie.video_url.to_s do %>
+                    <%= image_tag(movie.video_url(:screenshot).to_s, id: "video", :alt => "screenshot", style: "height:13em;") %>
+                <% end %>
+              </li>
+              <li class="list-group-item"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><%= movie.movie_likes.count %>
+                  <span class="glyphicon glyphicon-comment" aria-hidden="true"><%= movie.movie_comments.count %></span>
+                  <i class="fa fa-user"></i>
+                              <%= link_to movie.user.name,user_path(movie.user.id) %></li>
+              <li class="list-group-item"><%= link_to "詳細", post_movie_path(movie.id) %><%= "(#{time_ago_in_words(movie.created_at)}前)" %></li>
 					</ul>
         		<% end %>
         	     <%= paginate @post_movies, class: "paginate" %>

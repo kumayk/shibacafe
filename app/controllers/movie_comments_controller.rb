@@ -1,4 +1,5 @@
 class MovieCommentsController < ApplicationController
+    before_action :authenticate_user!
 	def create
         @post_movie = PostMovie.find(params[:post_movie_id])
         comment = current_user.movie_comments.new(movie_comment_params)

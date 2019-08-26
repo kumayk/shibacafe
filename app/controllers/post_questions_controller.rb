@@ -4,7 +4,7 @@ class PostQuestionsController < ApplicationController
   end
 
   def index
-  	  @post_questions = PostQuestion.page(params[:page]).reverse_order.per(6)
+  	  @post_questions = PostQuestion.page(params[:page]).reverse_order.per(9)
   end
 
   def show
@@ -35,7 +35,7 @@ class PostQuestionsController < ApplicationController
   def destroy
   	  @post_question = PostQuestion.find(params[:id])
       @post_question.destroy
-         redirect_to post_questions_path
+         redirect_to user_path(current_user)
   end
 
   private

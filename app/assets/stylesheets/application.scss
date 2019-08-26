@@ -130,17 +130,35 @@ html, body {
     width: 140px;
     display: none;
     text-align: center;
-    line-height: 2.8;
     position: absolute;
 }
 
 .nav > li li:hover > a {/*layer-2*/
     color: orange;
     background: #2b2c2d38;
-    line-height: 0.8;
+    /*line-height: 0.8;*/
 }
 
 .nav li ul li a {
     border-top: 1px solid #eee;
+    line-height: 40px;
+}
+
+.notification-item{
+    position: relative;
+}
+
+.circle{
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  left: 40px;
+  text-align: center;
+  line-height: 15px;
+  background-color: red;
+  .notice-count {
+  }
 }
 

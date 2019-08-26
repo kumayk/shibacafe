@@ -1,4 +1,5 @@
 class MovieLikesController < ApplicationController
+    before_action :authenticate_user!
   def create
         @post_movie = PostMovie.find(params[:post_movie_id])
         movie_like = current_user.movie_likes.new(post_movie_id: @post_movie.id)

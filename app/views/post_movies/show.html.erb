@@ -22,6 +22,8 @@
               <li>
                 <i class="fa fa-calendar"></i><%= @post_movie.created_at.strftime('%Y/%m/%d/%H:%M') %>
               </li>
+
+              <% if user_signed_in? %>
                 <!-- いいね -->
                 <% if @post_movie.movie_liked_by?(current_user) %>
                  <li>
@@ -45,10 +47,11 @@
                 <% end %>
 
                 <% if @post_movie.user == current_user %>
-                   <%= link_to "削除", post_movie_path(@post_movie), method: :delete %>
+                   <%= link_to "削除", post_movie_path(@post_movie), data: { confirm: "消去します。宜しいですか?" }, method: :delete %>
                 <% end %>
                  </li>
             </ul>
+            <% end %>
 
             <div class="post-content-inner mt-20">
                <p><%= @post_movie.caption %></p>
@@ -71,7 +74,7 @@
                               <span class="comment-date"><%= movie_comment.created_at.strftime('%Y/%m/%d/%H:%M') %></span>
                             </span>
                               <% if movie_comment.user == current_user %>
-                              <%= link_to "削除", post_movie_movie_comments_path(id: movie_comment,post_movie_id: @post_movie), method: :delete, "data-confirm" => "本当に消しますか？" %>
+                              <%= link_to "削除", post_movie_movie_comments_path(id: movie_comment,post_movie_id: @post_movie), method: :delete, "data-confirm" => "コメントを消去します。宜しいですか？" %>
                               <% end %>
                         </div>
                           <div class="comment-entry"><%= movie_comment.comment %></div>
