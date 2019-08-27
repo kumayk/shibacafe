@@ -50,7 +50,7 @@ nav.pagination {
 }
 
 .thumbnail {
-    padding:0px;
+    padding:10px;
 }
 .panel {
     position:relative;
@@ -64,7 +64,6 @@ nav.pagination {
     display:block;
     content:" ";
     border-color:transparent;
-    border-style:solid solid outset;
     pointer-events:none;
 }
 .panel>.panel-heading:after{

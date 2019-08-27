@@ -1,4 +1,19 @@
 ja:
+  errors:
+    messages:
+      not_found: "は見つかりませんでした"
+#      not_found: "not found"
+      already_confirmed: "は既に登録済みです"
+#      already_confirmed: "was already confirmed"
+      not_locked: "は凍結されていません"
+#      not_locked: "was not locked"
+      taken: "は既に使用されています。"
+      blank: "が入力されていません。"
+      too_short: "は%{count}文字以上に設定して下さい。"
+      too_long: "は%{count}文字以下に設定して下さい。"
+      invalid: "は有効でありません。"
+      confirmation: "が内容とあっていません。"
+
   datetime:
     distance_in_words:
       half_a_minute: "30秒前後"

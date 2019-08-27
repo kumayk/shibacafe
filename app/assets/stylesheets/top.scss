@@ -2,3 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.top-main-visual {
+  width: 40%;
+  height: 380px;
+  background-image: url(shiba3.jpg);
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  float: left;
+  margin: 10px 20px;
+}
+
+.top-text {
+  font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif;
+}

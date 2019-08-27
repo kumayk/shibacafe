@@ -9,3 +9,25 @@ div.image-list {
 nav.pagination {
   display: none;
 }
+
+.row-movie-comment {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.post-movies {
+  position: relative;
+  }
+
+.post-movies .fa {/*classがfaのアイコンに対して*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;/*余計な隙間を除く*/
+  padding:0;/*余計な隙間を除く*/
+  color: #fcfcfadb;/*アイコン色*/
+  font-size: 60px;/*サイズ*/
+  }

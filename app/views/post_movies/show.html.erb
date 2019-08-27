@@ -3,54 +3,56 @@
     <div class="row">
       <div class="col-md-12 post_movies_container">
         <div class="post-item">
-
           <div class="post-meta-top">
             <div class="post-movie">
-              <br>
+                <br>
                 <div class="col-xs-6 col-xs-offset-2">
+                 <div class="post-movies">
      	             <%= link_to @post_movie.video_url.to_s do %>
+                    <i class="fa fa-play-circle"></i>
                       <%= image_tag(@post_movie.video_url(:screenshot).to_s, id: "video", :alt => "screenshot", style: "height:300px;") %>
                    <% end %>
+                 </div>
                 </div>
+              </div>
             </div>
-          </div>
 
          <div class="col-xs-4">
           <div class="post-content">
             <ul class="list-group col-lg-3" style="width: 300px;">
               <li class="list-group-item">
                 <i class="fa fa-calendar"><%= @post_movie.created_at.strftime('%Y/%m/%d/%H:%M') %></i>
-                  <%= link_to user_path(@post_movie.user.id) do %>
-                     <%= attachment_image_tag @user, :profile_image, class: "img-circle profile-img", fallback: "no-image.jpg", size: "30x30" %>
-                  <% end %>
-                   <%= link_to @post_movie.user.name,user_path(@post_movie.user.id) %>
+                <%= link_to user_path(@post_movie.user.id) do %>
+                   <%= attachment_image_tag @post_movie.user, :profile_image, class: "img-circle profile-img", fallback: "no-image.jpg", size: "30x30" %>
+                <% end %>
+                <%= link_to @post_movie.user.name,user_path(@post_movie.user.id) %>
               </li>
               <% if user_signed_in? %>
                 <!-- いいね -->
                 <% if @post_movie.movie_liked_by?(current_user) %>
                   <li class="list-group-item">
                    <%= link_to post_movie_movie_likes_path(@post_movie), method: :delete do %>
-                   <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-                   <%= @post_movie.movie_likes.count %> いいね取消
+                    <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                    <%= @post_movie.movie_likes.count %> いいね取消
                    <% end %>
                   </li>
                 <% else %>
+
                   <li class="list-group-item">
                    <%= link_to post_movie_movie_likes_path(@post_movie), method: :post do %>
                    <i class="fa fa-heart-o" aria-hidden="true"></i>
                    <%= @post_movie.movie_likes.count %> いいね
                    <% end %>
+
                   </li>
                 <% end %>
+
                 <!-- 編集/削除 -->
                 <% if @post_movie.user == current_user %>
-                　<li class="list-group-item">
-                     <%= link_to "編集する", edit_post_movie_path(@post_movie) %>/
-                  <% end %>
-                  <% if @post_movie.user == current_user %>
-                     <%= link_to "削除する", post_movie_path(@post_movie), data: { confirm: "削除します。宜しいですか?" }, method: :delete %>
-                  <% end %>
-                　 </li>
+                  <li class="list-group-item">
+                    <%= link_to "編集する", edit_post_movie_path(@post_movie) %>/
+                    <%= link_to "削除する", post_movie_path(@post_movie), data: { confirm: "削除します。宜しいですか?" }, method: :delete %>
+                  </li>
                 <% end %>
 
                 <li class="list-group-item">
@@ -59,53 +61,46 @@
                 <li class="list-group-item">
                     <p><%= simple_format(@post_movie.caption) %></p>
                 </li>
+              <% end %>
               </ul>
             </div>
           </div>
         </div>
       </div>
-     </div>
     </div>
    </div>
 
+ <!-- コメントの表示 -->
     <div class="container">
-        <div class="row-comment">
-            <!-- コメントの表示 -->
-          <div class="comment-list bt style-2" id="comments">
-            <div class="float-wrapper">
-             <br>
-              <p><b class="comment-count">(<%= @post_movie.movie_comments.count %>件のコメント)</b></p>
-            </div>
+      <div class="row-movie-comment">
+        <br>
+        <p><b class="comment-count">(<%= @post_movie.movie_comments.count %>件のコメント)</b></p>
                <% @post_movie.movie_comments.each do |movie_comment| %>
-                  <div class="comment">
-                    <div class="comment-body bb">
-                      <div class="comment-text">
-                        <div class="comment-author clearfix">
-                          <span class="comment-meta">
-                              <span class="comment-date"><%= movie_comment.created_at.strftime('%Y/%m/%d/%H:%M') %></span>
-                          </span>
+                  <div class="col-sm-2">
+                    <div class="thumbnail">
+                      <%= link_to user_path(@post_movie.user.id) do %>
+                        <%= attachment_image_tag movie_comment.user, :profile_image, class: "img-circle profile-img", fallback: "no-image.jpg", size: "50x70" %>
+                      <% end %>
+                    </div>
+                  </div>
+                   <div class="col-sm-10">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <strong><%= link_to movie_comment.user.name,user_path(movie_comment.user.id) %></strong>
+                          <span class="comment-date"><%= movie_comment.created_at.strftime('%Y/%m/%d/%H:%M') %></span>
                               <% if movie_comment.user == current_user %>
-                              <%= link_to "削除する", post_movie_movie_comments_path(id: movie_comment,post_movie_id: @post_movie), method: :delete, "data-confirm" => "コメントを削除します。宜しいですか？" %>
+                                <%= link_to "削除する", post_movie_movie_comments_path(id: movie_comment,post_movie_id: @post_movie), method: :delete, "data-confirm" => "コメントを削除します。宜しいですか？" %>
                               <% end %>
                         </div>
-                          <div class="comment-entry">
-                            <%= link_to user_path(@post_movie.user.id) do %>
-                               <%= attachment_image_tag @user, :profile_image, class: "img-circle profile-img", fallback: "no-image.jpg", size: "30x30" %>
-                             <% end %>
-                               <%= link_to movie_comment.user.name,user_path(movie_comment.user.id) %>
-                               <%= movie_comment.comment %></div>
+                       <div class="panel-body"><%= movie_comment.comment %></div>
                       </div>
                     </div>
-                  </li>
                 <% end %>
-          </div>
 
            <!-- コメント投稿フォーム -->
-           <div class="section-title-wrapper style-1 v1 mt-30" id="divAddComment">
-            <h3 class="section-title left">
-              <span>コメント</span>
-            </h3>
-           </div>
+           <div class="col-sm-12">
+             <br>
+             <div><h3>コメント</h3></div>
                <%= form_for [@post_movie, @movie_comment] do |f| %>
                  <div class="row">
                   <div class="col-sm-12">
@@ -114,9 +109,7 @@
                  </div>
                 <%= f.submit "投稿する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
                <% end %>
-
-        </div>
-      </div>
+           </div>
+       </div>
     </div>
-  </div>
 </section>

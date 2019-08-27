@@ -70,9 +70,12 @@
                   <% @user.post_movies.reverse_order.each do |movie| %>
                    <ul class="list-group col-lg-3" style="width: 380px;">
                      <li class="list-group-item">
+                       <div class="post-movies">
                         <%= link_to movie.video_url.to_s do %>
+                          <i class="fa fa-play-circle"></i>
                            <%= image_tag(movie.video_url(:screenshot).to_s, id: "video", :alt => "screenshot", style: "height:13em;") %>
                         <% end %>
+                       </div>
                      </li>
                        <li class="list-group-item"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
                            <%= movie.movie_likes.count %>

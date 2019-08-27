@@ -37,5 +37,5 @@ class User < ApplicationRecord
           action: "follow"
         )
     notification.save if notification.valid?
-    end
+  end
 end
