@@ -64,6 +64,7 @@ nav.pagination {
     display:block;
     content:" ";
     border-color:transparent;
+    border-style:solid solid outset;
     pointer-events:none;
 }
 .panel>.panel-heading:after{

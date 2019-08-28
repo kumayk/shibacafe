@@ -17,7 +17,7 @@
                   <span class="glyphicon glyphicon-comment" aria-hidden="true"><%= movie.movie_comments.count %></span>
                   <i class="fa fa-user"></i>
                               <%= link_to movie.user.name,user_path(movie.user.id) %></li>
-              <li class="list-group-item"><%= link_to "詳細", post_movie_path(movie.id) %><%= "(#{time_ago_in_words(movie.created_at)}前)" %></li>
+              <li class="list-group-item"><%= link_to "詳細", post_movie_path(movie.id) %></li>
 					</ul>
         		<% end %>
         	     <%= paginate @post_movies, class: "paginate" %>
