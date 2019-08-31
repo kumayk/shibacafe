@@ -29,7 +29,7 @@
             <% @post_question.answers.each do |answer| %>
             <div class="col-sm-2">
               <div class="thumbnail">
-                 <%= link_to user_path(@post_question.user.id) do %>
+                 <%= link_to user_path(answer.user.id) do %>
                     <%= attachment_image_tag answer.user, :profile_image, class: "img-circle profile-img", fallback: "no-image.jpg", size: "50x70" %>
                  <% end %>
               </div>
@@ -37,7 +37,7 @@
         <div class="col-sm-10">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <strong><%= link_to @post_question.user.name,user_path(@post_question.user.id) %></strong>
+              <strong><%= link_to answer.user.name,user_path(answer.user.id) %></strong>
               <span><%= @post_question.created_at.strftime('%Y/%m/%d/%H:%M') %></span>
               <% if answer.user == current_user %>
                 <%= link_to "削除", post_question_answers_path(id: answer,post_question_id: @post_question), data: { confirm: "回答を消去します。宜しいですか?" }, method: :delete %>

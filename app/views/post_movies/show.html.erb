@@ -46,7 +46,7 @@
 
                   </li>
                 <% end %>
-
+              <% end %>
                 <!-- 編集/削除 -->
                 <% if @post_movie.user == current_user %>
                   <li class="list-group-item">
@@ -61,7 +61,6 @@
                 <li class="list-group-item">
                     <p><%= simple_format(@post_movie.caption) %></p>
                 </li>
-              <% end %>
               </ul>
             </div>
           </div>
@@ -78,7 +77,7 @@
                <% @post_movie.movie_comments.each do |movie_comment| %>
                   <div class="col-sm-2">
                     <div class="thumbnail">
-                      <%= link_to user_path(@post_movie.user.id) do %>
+                      <%= link_to user_path(movie_comment.user.id) do %>
                         <%= attachment_image_tag movie_comment.user, :profile_image, class: "img-circle profile-img", fallback: "no-image.jpg", size: "50x70" %>
                       <% end %>
                     </div>

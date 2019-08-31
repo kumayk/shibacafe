@@ -112,7 +112,9 @@
                            <%= attachment_image_tag image, :image, class: "profile-thumb", size: "220x220" %>
                         <% end %>
                           <p><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><%= image.likes.count %>
-                            <span class="glyphicon glyphicon-comment" aria-hidden="true"><%= image.image_comments.count %></span>
+                             <span class="glyphicon glyphicon-comment" aria-hidden="true"><%= image.image_comments.count %></span>
+                             <i class="fa fa-user"></i>
+                             <%= link_to image.user.name,user_path(image.user.id) %>
                             <%= "(#{time_ago_in_words(image.created_at)}前)" %>
                           </p>
                        </div>
