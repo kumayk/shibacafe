@@ -1,6 +1,6 @@
 class CreateNotifications < ActiveRecord::Migration[5.2]
   def change
-    create_table :notifications do |t|
+    create_table :notifications, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
       t.integer  :visiter_id
       t.integer  :visited_id
       t.integer  :post_image_id

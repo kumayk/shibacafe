@@ -49,6 +49,7 @@
                      <% end %>
                    </li>
                   <% end %>
+                <% end %>
                   <!-- 編集/削除 -->
                   <% if @post_image.user == current_user %>
                    <li class="list-group-item">
@@ -62,7 +63,6 @@
                   <li class="list-group-item">
                     <p><%= simple_format(@post_image.caption) %></p>
                   </li>
-                <% end %>
               </ul>
             </div>
           </div>
@@ -79,7 +79,7 @@
       <% @post_image.image_comments.each do |image_comment| %>
         <div class="col-sm-2">
           <div class="thumbnail">
-            <%= link_to user_path(@post_image.user.id) do %>
+            <%= link_to user_path(image_comment.user.id) do %>
               <%= attachment_image_tag image_comment.user, :profile_image, class: "img-circle profile-img", fallback: "no-image.jpg", size: "50x70" %>
             <% end %>
           </div>
