@@ -1,4 +1,7 @@
-# README
+## README
+## アプリケーション概要
+SHIBA CAFE(シバカフェ)
+柴犬好きが集まるコミュニティサイトです。
 
 # デプロイURL
 http://ec2-18-182-79-73.ap-northeast-1.compute.amazonaws.com/
