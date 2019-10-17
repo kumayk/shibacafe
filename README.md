@@ -1,6 +1,6 @@
-## README
+# README
 ## アプリケーション概要
-SHIBA CAFE(シバカフェ)
+SHIBA CAFE(シバカフェ)  
 柴犬好きが集まるコミュニティサイトです。
 
 # デプロイURL
