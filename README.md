@@ -4,7 +4,7 @@
 「SHIBA CAFE（シバカフェ）」  
 柴犬好きが集まって画像や動画などを共有できるサービスです。
 
-## デプロイURL
+## URL
 http://ec2-18-182-79-73.ap-northeast-1.compute.amazonaws.com/
 
 ## 使い方
